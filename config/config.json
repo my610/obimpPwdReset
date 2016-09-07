@@ -1,0 +1,29 @@
+{
+  "NODE_ENV": "production",
+  "host": "localhost:3000",
+  "PORT": 3000,
+  "locale": {
+    "locales": [
+      "en",
+      "ru"
+    ],
+    "defaultLocale": "ru"
+  },
+  "reCaptcha": {
+    "site_key": "",
+    "secret_key": ""
+  },
+  "bimoid": {
+    "host": "bimoid.net",
+    "port": 7024,
+    "secret_key": ""
+  },
+  "mailer": {
+    "login": "no-reply@domain.tld",
+    "password": "password",
+    "service": "Yandex"
+  },
+  "token": {
+    "expires": 7200
+  }
+}

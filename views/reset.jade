@@ -1,0 +1,26 @@
+extends layouts/layout
+
+block content
+
+  div#success-info.alert.alert-info(style="display: none;")
+  form.form-horizontal(method='POST', action='/reset' id="set-password")
+    .form-group
+      .col-sm-6.col-sm-offset-3.col-xs-12
+        span#helpBlock.help-block #{i18n.t("information_reset")}
+    .form-group
+      label(for="password1" class="col-sm-2 col-sm-offset-1 col-xs-12 control-label") #{i18n.t("password_1")}
+      .col-sm-6.col-xs-12
+        input.form-control(type="password" id="password1" name="password1")
+    .form-group
+      label(for="password2" class="col-sm-2 col-sm-offset-1 col-xs-12 control-label") #{i18n.t("password_2")}
+      .col-sm-6.col-xs-12
+        input.form-control(type="password" id="password2" name="password2")
+    input(type="hidden" name="token" value=data.token)
+    input(type="hidden" name="sign" value=data.sign)
+    .form-group
+      .col-sm-6.col-sm-offset-3.col-xs-12
+        span#resultBlock
+    .form-group
+      .col-sm-2.col-xs-offset-1.col-sm-offset-3.col-xs-10
+        button(type="submit" class="btn btn-default") #{i18n.t("btn_password")}
+

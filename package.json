@@ -1,0 +1,27 @@
+{
+  "name": "obimpPwdReset",
+  "version": "0.1.0",
+  "author": "alexey-m",
+  "description": "Восстановление пароля для Bimoid",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "express-recaptcha": "^2.1.0",
+    "express-session": "^1.14.1",
+    "i18n": "^0.8.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.7.0",
+    "nconf": "^0.8.4",
+    "nodemailer": "^2.5.0",
+    "nodemailer-wellknown": "^0.1.10",
+    "path": "^0.12.7",
+    "serve-favicon": "~2.3.0",
+  }
+}
