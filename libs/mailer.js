@@ -2,6 +2,7 @@
 
 const nodemailer = require('nodemailer');
 const jade = require('jade');
+const path = require('path');
 
 const config = require('../config');
 const Token = require('../libs/token');
@@ -44,18 +45,18 @@ class SendMail {
         query = {token: token, sign: sign},
         url = Token.getURL(this.protocol, config.get('host'), 'reset', query);
 
-      const compiledFunction = jade.compileFile('./templates/mail.' + this.i18n.getLocale() + '.jade');
+      const compiledFunction = jade.compileFile(path.join(__dirname, '/../templates/mail.' + this.i18n.getLocale() + '.jade'));
 
       this.mailOptions.text = this.i18n.t('mail_text', url);
       this.mailOptions.html = compiledFunction({url: url});
 
       transporter.sendMail(this.mailOptions, function (error, info) {
         if (error) {
-          reject(error);
           console.log('sendMail error: ', error.message);
+          reject(error);
         }
-        resolve();
         console.log('Message sent: ' + info.response);
+        resolve();
       });
     })
   }
