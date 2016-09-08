@@ -58,7 +58,6 @@ router.post('/', function (req, res) {
                     .catch(() => {
                       res.json({code: 500, statusText: res.t("api_service_unavailable")});
                     });
-                  res.json({code: 200, statusText: res.t("send_mail")});
                 } else {
                   res.json({code: 403, statusText: res.t("api_security_mail_not_found")});
                 }
