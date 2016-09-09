@@ -20,7 +20,7 @@ router.get('/', function (req, res, next) {
     return;
   }
 
-  if (reset.expires > Date.now()) {
+  if (reset.expires < Date.now()) {
     next(new Error(res.t("api_expires_link")));
     return;
   }
@@ -73,7 +73,7 @@ router.post('/', function (req, res) {
     res.json({code: 400, statusText: res.t("api_bad_link")});
   }
 
-  if (reset.expires > Date.now()) {
+  if (reset.expires < Date.now()) {
     res.json({code: 403, statusText: res.t("api_expires_link")});
   }
 

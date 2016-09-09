@@ -8,7 +8,7 @@ const secret = config.get('bimoid:secret_key');
 
 function cryptToken(account) {
   const cipher = crypto.createCipher('aes256', secret);
-  let token = {account: account, expires: Date.now() + config.get('token:expires')};
+  let token = {account: account, expires: Date.now() + config.get('token:expires')*1000};
   let encrypted = cipher.update(JSON.stringify(token), 'utf8', 'base64');
   encrypted += cipher.final('base64');
   return encrypted;
