@@ -18,13 +18,14 @@ let transporter = nodemailer.createTransport({
 
 class SendMail {
 
-  constructor(user, i18n, protocol) {
+  constructor(user, i18n, protocol, hostname) {
 
     this.securityMail = user.secureEmail;
     this.login = user.account;
     this.password = user.password;
     this.i18n = i18n;
     this.protocol = protocol;
+    this.hostname = hostname;
 
     this.mailOptions = {
       from: config.get('mailer:login'),
@@ -40,10 +41,11 @@ class SendMail {
 
     return new Promise((resolve, reject) => {
 
+      let hostname = !config.get('host') ? this.hostname : config.get('mailer:login');
       let token = Token.cryptToken(this.login),
         sign = Token.signToken(this.login, this.password),
         query = {token: token, sign: sign},
-        url = Token.getURL(this.protocol, config.get('host'), 'reset', query);
+        url = Token.getURL(this.protocol, hostname, 'reset', query);
 
       const compiledFunction = jade.compileFile(path.join(__dirname, '/../templates/mail.' + this.i18n.getLocale() + '.jade'));
 

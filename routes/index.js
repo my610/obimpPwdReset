@@ -50,7 +50,7 @@ router.post('/', function (req, res) {
                 if (params.secureEmail.length > 4 && params.secureEmail.includes('@')) {
 
                   let user = {account: params.account, secureEmail: params.secureEmail, password: params.password};
-                  let mailer = new Mailer(user, res, req.protocol);
+                  let mailer = new Mailer(user, res, req.protocol, req.hostname);
                   mailer.send()
                     .then(() => {
                       res.json({code: 200, statusText: res.t("send_mail")});

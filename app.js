@@ -22,10 +22,15 @@ i18n.configure({
   api: {'__': 't', '__n': 'tn'}
 });
 
-var routes = require('./routes/index');
-var reset = require('./routes/reset');
+let routes = require('./routes/index');
+let reset = require('./routes/reset');
 
-var app = express();
+let app = express();
+
+let trustProxy = config.get('trust_proxy');
+if (!!trustProxy) {
+  app.set('trust proxy', trustProxy);
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -25,5 +25,10 @@
   },
   "token": {
     "expires": 7200
-  }
+  },
+  "trust_proxy": [
+    "loopback",
+    "linklocal",
+    "uniquelocal"
+  ]
 }
