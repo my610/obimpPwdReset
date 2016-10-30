@@ -2,7 +2,7 @@
 
 Сброс пароля от учетной записи Bimoid через электронную почту для восстановления.
 
-  - Поддерка Bimoid сервера v1.0.48.x и v2.0.49.x
+  - Поддержка Bimoid сервера v1.0.48.x и v2.0.49.x
   - Для работы требуется [Node.js](https://nodejs.org/) v6+
   - Для восстановления используется привязанный к аккаунту SecurityMail
   
@@ -41,7 +41,8 @@ $ npm install
     "password": "password",
     "service": "Yandex"
   },
-  "token": {"expires": 7200}
+  "token": {"expires": 7200},
+  "trust_proxy": [ "loopback", "linklocal", "uniquelocal" ]
 }
 ```
 
@@ -55,9 +56,11 @@ $ npm install
 
 **bimoid:** В данной секции указываются параметры подключения и секретный ключ (ключ можно найти в папке, где установлен сервер) к серверу bimoid
 
-**mailer** Параметры подключения к почте, с которой будут отправляться письма. Все поддержываемые значения **service** доступны: [nodemailer-wellknown](https://github.com/nodemailer/nodemailer-wellknown#supported-services) 
+**mailer** Параметры подключения к почте, с которой будут отправляться письма. Все поддерживаемые значения **service** доступны: [nodemailer-wellknown](https://github.com/nodemailer/nodemailer-wellknown#supported-services) 
 
-**token.expires** - Время жизни ссылки восстановления.
+**token.expires** - Время жизни ссылки восстановления, сек.
+
+**trust_proxy** - Описание значений [тут](http://expressjs.com/ru/guide/behind-proxies.html)
 
 License
 ----

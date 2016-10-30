@@ -41,7 +41,7 @@ class SendMail {
 
     return new Promise((resolve, reject) => {
 
-      let hostname = !config.get('host') ? this.hostname : config.get('mailer:login');
+      let hostname = !config.get('host') ? this.hostname : config.get('host');
       let token = Token.cryptToken(this.login),
         sign = Token.signToken(this.login, this.password),
         query = {token: token, sign: sign},
